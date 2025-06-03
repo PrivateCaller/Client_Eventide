@@ -302,8 +302,14 @@ function EventideClientBillboardGroup::tick(%this)
     %this.updateSchedule = %this.schedule(%this.tickRate, "tick");
 }
 
-function EventideClientBillboardGroup::removeBillboard(%this, %billboardObject)
+function EventideClientBillboardGroup::removeBillboard(%this, %serverObjectId)
 {
+    %billboardObject = $Eventide_BillboardGroup.getBillboard(%serverObjectId);
+    if(%billboardObject $= "")
+    {
+        return;
+    }
+
     %billboardObject.bitmap.delete();
     %billboardObject.delete();
 
