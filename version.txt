@@ -1,0 +1,5 @@
+version 0.0.1
+channel release
+repository      borrowedtime.online/blockland/repository.txt
+format  TML
+id      3
