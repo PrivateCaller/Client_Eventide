@@ -1,3 +1,16 @@
+$resolutionHash = $pref::Video::resolution;
+$resolution = getWords($pref::Video::resolution, 0, 1);
+$resolutionX = getWord($resolution, 0);
+$resolutionY = getWord($resolution, 1);
+$aspectRatio = ($resolutionX / $resolutionY);
+$horizontalFOVHash = $Pref::Player::defaultFov;
+$horizontalFOV = $Pref::Player::defaultFov;
+
+function getAspectRatio()
+{
+    return $aspectRatio;
+}
+
 //Thanks ChatGPT.
 function calculateVerticalFOV(%horizontalFOV, %aspectRatio)
 {
@@ -10,17 +23,6 @@ function calculateVerticalFOV(%horizontalFOV, %aspectRatio)
     return mRadToDeg(%verticalFOVRadians);
 }
 
-//
-// Resolution scaling support functions.
-//
-
-$resolutionHash = $pref::Video::resolution;
-$resolution = getWords($pref::Video::resolution, 0, 1);
-$resolutionX = getWord($resolution, 0);
-$resolutionY = getWord($resolution, 1);
-$aspectRatio = ($resolutionX / $resolutionY);
-$horizontalFOVHash = $Pref::Player::defaultFov;
-$horizontalFOV = $Pref::Player::defaultFov;
 $verticalFOV = calculateVerticalFOV($horizontalFOV, $aspectRatio);
 
 function getResolution()
@@ -36,11 +38,6 @@ function getResolutionX()
 function getResolutionY()
 {
     return $resolutionY;
-}
-
-function getAspectRatio()
-{
-    return $aspectRatio;
 }
 
 function getHorizontalFOV()
